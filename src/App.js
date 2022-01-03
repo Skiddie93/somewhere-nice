@@ -12,9 +12,9 @@ function App() {
     <div className='main'>
       
     <Router>
-    <Sidebar />
+      <Sidebar />
       <Routes>
-        <Route path="/:id" element={<Place />} />
+        <Route path="/city/:id" element={<Place />} />
       </Routes>
     </Router>
     </div>
