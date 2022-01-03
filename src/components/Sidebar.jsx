@@ -44,7 +44,7 @@ const Sidebar = () => {
                 </div>
                 <div className='results'>
                     <ul>
-                      {slicedCities.map(i=><li key={i.id}>{i.name}</li>)}
+                      {slicedCities.map(i=><li key={i.id}> <Link to={'/'+ i.id}state={i}>{i.name}</Link></li>)}
                     </ul>
                     <br />
                     <br />

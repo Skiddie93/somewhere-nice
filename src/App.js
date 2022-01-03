@@ -14,7 +14,7 @@ function App() {
     <Router>
     <Sidebar />
       <Routes>
-        <Route path="new" element={<Place />} />
+        <Route path="/:id" element={<Place />} />
       </Routes>
     </Router>
     </div>
