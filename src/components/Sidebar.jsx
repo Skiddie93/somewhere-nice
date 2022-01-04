@@ -6,21 +6,20 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 
-const Sidebar = () => {
+const Sidebar = (props) => {
     useEffect(() => {
-        getData()
-      }, []);
+        getData(cities)
+      }, [props.cities]);
 
+     
       const [range,setRange] = useState([0,10])
-      const [cities, setCities] = useState([])
+      const cities = props.cities
       const [toRender, setToRender] = useState([])
       const [slicedCities,setSlicedCities] = useState([{id:1,name:'Loading'}])
       let navigate = useNavigate()
 
-      async function getData(){
-        const response = await fetch("/indexedCities.json")
-        const data = await response.json()
-        setCities(data)
+      async function getData(data){
+    
         setToRender(data)
         setSlicedCities(data.slice(0,10))
     }
@@ -48,7 +47,7 @@ const Sidebar = () => {
            const path = '/city/' + pageParams.state.id
            navigate(path, pageParams)
        }
-     
+      
     return (
         <div className='sidebar'>
             <div className="container">
@@ -78,8 +77,7 @@ const Sidebar = () => {
                     <div className='nav'>
                         <span onClick={getPrev}> Prev </span>
                         <span onClick={getNext}> Next </span>
-                        <span onClick={getRandom}> Random </span>
-                        
+                        <span onClick={getRandom}> Random </span>   
                     </div>
                 </div>
             </div>
