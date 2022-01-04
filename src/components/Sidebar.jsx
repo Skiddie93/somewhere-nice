@@ -43,7 +43,10 @@ const Sidebar = () => {
 
        const getRandom = () => {
            const limit = cities.length
-           return cities[Math.floor(Math.random() * limit) + 1]
+           const cityObject = cities[Math.floor(Math.random() * limit) + 1]
+           const pageParams = {state:cityObject}
+           const path = '/city/' + pageParams.state.id
+           navigate(path, pageParams)
        }
      
     return (
@@ -75,11 +78,7 @@ const Sidebar = () => {
                     <div className='nav'>
                         <span onClick={getPrev}> Prev </span>
                         <span onClick={getNext}> Next </span>
-                        <span onClick={() =>{
-                            const pageParams = {state:getRandom()}
-                            const path = '/city/' + pageParams.state.id
-                            navigate(path, pageParams)
-                        }}> Random </span>
+                        <span onClick={getRandom}> Random </span>
                         
                     </div>
                 </div>
