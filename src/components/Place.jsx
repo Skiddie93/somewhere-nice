@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 
 const Place = () => {
     const linkProp = useLocation().state
+    console.log(linkProp);
     const geoLocation = linkProp.lat + "%2C%20" + linkProp.lng
 
 

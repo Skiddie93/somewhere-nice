@@ -55,8 +55,11 @@
         text-align: center;
         width: 100%;
         padding-top: 20px;
+       
         span {
             margin: 10px 10px;
+            cursor: pointer;
+            user-select: none;
         }
     }
 }

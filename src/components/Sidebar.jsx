@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../style.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+
 
 
 
@@ -13,6 +15,7 @@ const Sidebar = () => {
       const [cities, setCities] = useState([])
       const [toRender, setToRender] = useState([])
       const [slicedCities,setSlicedCities] = useState([{id:1,name:'Loading'}])
+      let navigate = useNavigate()
 
       async function getData(){
         const response = await fetch("/indexedCities.json")
@@ -29,6 +32,7 @@ const Sidebar = () => {
                 setRange(newRange)
             }
         }
+
         const getPrev = () =>{
             if(range[0]!==0){
                 const newRange = range.map(i=>i-10)
@@ -36,13 +40,18 @@ const Sidebar = () => {
                 setRange(newRange)
            }
         }
-       
-        
+
+       const getRandom = () => {
+           const limit = cities.length
+           return cities[Math.floor(Math.random() * limit) + 1]
+       }
+     
     return (
         <div className='sidebar'>
             <div className="container">
                 <div className='search'>
                     <input  onChange={event => {
+
                         const input = event.target.value.toLowerCase()
                         const newRange = [0,10]
                         if(input.length > 2){
@@ -53,8 +62,10 @@ const Sidebar = () => {
                         }else{
                             setToRender(cities)
                             setSlicedCities(toRender.slice(range[0],range[1]))
+                            }
                         }
-                    }}
+                    }
+
                      type="text" />
                 </div>
                 <div className='results'>
@@ -64,6 +75,12 @@ const Sidebar = () => {
                     <div className='nav'>
                         <span onClick={getPrev}> Prev </span>
                         <span onClick={getNext}> Next </span>
+                        <span onClick={() =>{
+                            const pageParams = {state:getRandom()}
+                            const path = '/city/' + pageParams.state.id
+                            navigate(path, pageParams)
+                        }}> Random </span>
+                        
                     </div>
                 </div>
             </div>
