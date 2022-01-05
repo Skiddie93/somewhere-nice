@@ -15,7 +15,7 @@ const Sidebar = (props) => {
       const [range,setRange] = useState([0,10])
       const cities = props.cities
       const [toRender, setToRender] = useState([])
-      const [slicedCities,setSlicedCities] = useState([{id:1,name:'Loading'}])
+      const [slicedCities,setSlicedCities] = useState([])
       let navigate = useNavigate()
 
       async function getData(data){
@@ -49,35 +49,37 @@ const Sidebar = (props) => {
        }
       
     return (
-        <div className='sidebar'>
-            <div className="container">
-                <div className='search'>
-                    <input  onChange={event => {
+        <div className='sidebar-wrapper'>
+            <div className='sidebar'>
+                <div className="container">
+                    <div className='search'>
+                        <input  onChange={event => {
 
-                        const input = event.target.value.toLowerCase()
-                        const newRange = [0,10]
-                        if(input.length > 2){
-                            const matchingTerms = cities.filter(i=>i.name.toLowerCase().includes(input))
-                            setRange(newRange)
-                            setToRender(matchingTerms)
-                            setSlicedCities(matchingTerms.slice(newRange[0],newRange[1]))
-                        }else{
-                            setToRender(cities)
-                            setSlicedCities(toRender.slice(range[0],range[1]))
+                            const input = event.target.value.toLowerCase()
+                            const newRange = [0,10]
+                            if(input.length > 2){
+                                const matchingTerms = cities.filter(i=>i.name.toLowerCase().includes(input))
+                                setRange(newRange)
+                                setToRender(matchingTerms)
+                                setSlicedCities(matchingTerms.slice(newRange[0],newRange[1]))
+                            }else{
+                                setToRender(cities)
+                                setSlicedCities(toRender.slice(range[0],range[1]))
+                                }
                             }
                         }
-                    }
 
-                     type="text" />
-                </div>
-                <div className='results'>
-                    <ul>
-                      {slicedCities.map(i=><li key={i.id}><Link to={'/city/'+ i.id}state={i}>{i.name}</Link></li>)}
-                    </ul>
-                    <div className='nav'>
-                        <span onClick={getPrev}> Prev </span>
-                        <span onClick={getNext}> Next </span>
-                        <span onClick={getRandom}> Random </span>   
+                         type="text" />
+                    </div>
+                    <div className='results'>
+                        <ul>
+                          {slicedCities.map(i=><li key={i.id}><Link to={'/city/'+ i.id}state={i}>{i.name}</Link></li>)}
+                        </ul>
+                        <div className='nav'>
+                            <span onClick={getPrev}> Prev </span>
+                            <span onClick={getNext}> Next </span>
+                            <span onClick={getRandom}> Random </span>   
+                        </div>
                     </div>
                 </div>
             </div>

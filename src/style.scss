@@ -12,54 +12,88 @@
 
 .place {
     width: 100%;
-}
+    min-height: 100vh;
 
-.sidebar {
-    position: sticky;
-    background-color: green;
-    width: 300px;
-    height: 100vh;
-    min-width: 300px;
 
-    .search {
-        padding-bottom: 20px;
-
-        input {
-            width: 100%;
-        }
+    .tmsn {
+        display: inline-block;
+        font-size: 2rem;
+        padding: 10px;
+        background-color: pink;
+        cursor: pointer;
     }
 
-    ul {
-        li {
-            list-style: none;
-            font-size: 1.7rem;
-            text-align: center;
-            padding: 5px 0;
-            a{
-                text-decoration: none;
-                color: #2d2d2d;
-                &:hover{
-                    color: white;
+}
+
+.poi {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    
+    .category{
+        width: 33.3333%;
+    }
+}
+
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-wrapper {
+    position: relative;
+    min-width: 300px;
+    height: 100%;
+    .sidebar {
+        position: fixed;
+        background-color: green;
+        width: 300px;
+        height: 100vh;
+        min-width: 300px;
+
+        .search {
+            padding-bottom: 20px;
+
+            input {
+                width: 100%;
+            }
+        }
+
+        ul {
+            li {
+                list-style: none;
+                font-size: 1.7rem;
+                text-align: center;
+                padding: 5px 0;
+
+                a {
+                    text-decoration: none;
+                    color: #2d2d2d;
+
+                    &:hover {
+                        color: white;
+                    }
                 }
             }
         }
-    }
 
-    .container {
-        padding: 20px;
-    }
+        .container {
+            padding: 20px;
+        }
 
-    .nav {
-        font-size: 2rem;
-        display: inline-block;
-        text-align: center;
-        width: 100%;
-        padding-top: 20px;
-       
-        span {
-            margin: 10px 10px;
-            cursor: pointer;
-            user-select: none;
+        .nav {
+            font-size: 2rem;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            padding-top: 20px;
+
+            span {
+                margin: 10px 10px;
+                cursor: pointer;
+                user-select: none;
+            }
         }
     }
 }

@@ -18,46 +18,87 @@
 
 .place {
   width: 100%;
+  min-height: 100vh;
 }
 
-.sidebar {
-  position: -webkit-sticky;
-  position: sticky;
+.place .tmsn {
+  display: inline-block;
+  font-size: 2rem;
+  padding: 10px;
+  background-color: pink;
+  cursor: pointer;
+}
+
+.poi {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 10px;
+}
+
+.poi .category {
+  width: 33.3333%;
+}
+
+.center-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sidebar-wrapper {
+  position: relative;
+  min-width: 300px;
+  height: 100%;
+}
+
+.sidebar-wrapper .sidebar {
+  position: fixed;
   background-color: green;
   width: 300px;
   height: 100vh;
   min-width: 300px;
 }
 
-.sidebar .search {
+.sidebar-wrapper .sidebar .search {
   padding-bottom: 20px;
 }
 
-.sidebar .search input {
+.sidebar-wrapper .sidebar .search input {
   width: 100%;
 }
 
-.sidebar ul li {
+.sidebar-wrapper .sidebar ul li {
   list-style: none;
   font-size: 1.7rem;
   text-align: center;
   padding: 5px 0;
 }
 
-.sidebar ul li a {
+.sidebar-wrapper .sidebar ul li a {
   text-decoration: none;
   color: #2d2d2d;
 }
 
-.sidebar ul li a:hover {
+.sidebar-wrapper .sidebar ul li a:hover {
   color: white;
 }
 
-.sidebar .container {
+.sidebar-wrapper .sidebar .container {
   padding: 20px;
 }
 
-.sidebar .nav {
+.sidebar-wrapper .sidebar .nav {
   font-size: 2rem;
   display: inline-block;
   text-align: center;
@@ -65,7 +106,7 @@
   padding-top: 20px;
 }
 
-.sidebar .nav span {
+.sidebar-wrapper .sidebar .nav span {
   margin: 10px 10px;
   cursor: pointer;
   -webkit-user-select: none;
