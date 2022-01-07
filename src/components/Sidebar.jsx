@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import '../style.css';
 import { Link, useNavigate } from 'react-router-dom';
+import Filter from './Filter';
 
 
 
 
 
 const Sidebar = (props) => {
+
     useEffect(() => {
         getData(cities)
       }, [props.cities]);
 
-     
-      const [range,setRange] = useState([0,10])
-      const cities = props.cities
-      const [toRender, setToRender] = useState([])
-      const [slicedCities,setSlicedCities] = useState([])
-      let navigate = useNavigate()
+    const [range,setRange] = useState([0,10])
+    const cities = props.cities
+    const [toRender, setToRender] = useState([])
+    const [slicedCities,setSlicedCities] = useState([])
+    const navigate = useNavigate()
 
       async function getData(data){
     
@@ -75,12 +76,18 @@ const Sidebar = (props) => {
                         <ul>
                           {slicedCities.map(i=><li key={i.id}><Link to={'/city/'+ i.id}state={i}>{i.name}</Link></li>)}
                         </ul>
+                        </div>
                         <div className='nav'>
                             <span onClick={getPrev}> Prev </span>
                             <span onClick={getNext}> Next </span>
                             <span onClick={getRandom}> Random </span>   
                         </div>
-                    </div>
+
+                    <Filter 
+                    filter={props.filter}
+                    filterHandler={props.filterHandler}
+                    />   
+                    
                 </div>
             </div>
         </div>

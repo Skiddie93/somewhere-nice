@@ -3,6 +3,7 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .main {
@@ -38,10 +39,16 @@
       -ms-flex-direction: row;
           flex-direction: row;
   padding: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .poi .category {
   width: 33.3333%;
+}
+
+.poi .category h1 {
+  text-transform: capitalize;
 }
 
 .center-flex {
@@ -68,6 +75,7 @@
   width: 300px;
   height: 100vh;
   min-width: 300px;
+  overflow: scroll;
 }
 
 .sidebar-wrapper .sidebar .search {
@@ -98,6 +106,16 @@
   padding: 20px;
 }
 
+.sidebar-wrapper .sidebar .filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .sidebar-wrapper .sidebar .nav {
   font-size: 2rem;
   display: inline-block;
@@ -113,5 +131,9 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.MuiCheckbox-root {
+  padding: 0 !important;
 }
 /*# sourceMappingURL=style.css.map */
