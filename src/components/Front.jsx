@@ -16,7 +16,7 @@ const Front = (props) => {
     return (
         <div className='place center-flex'>
             <div onClick={getRandom} className='tmsn'>
-               <span>Take me somewhere nice</span>
+               <span><img src="/nav/random.svg" /></span>
             </div>
         </div>
     );

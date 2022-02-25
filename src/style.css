@@ -20,14 +20,16 @@
 .place {
   width: 100%;
   min-height: 100vh;
+  padding: 20px 0;
 }
 
 .place .tmsn {
-  display: inline-block;
-  font-size: 2rem;
-  padding: 10px;
-  background-color: pink;
   cursor: pointer;
+}
+
+.place .tmsn img {
+  height: 100px;
+  width: 100px;
 }
 
 .poi {
@@ -65,16 +67,16 @@
 
 .sidebar-wrapper {
   position: relative;
-  min-width: 300px;
+  min-width: 250px;
   height: 100%;
 }
 
 .sidebar-wrapper .sidebar {
   position: fixed;
-  background-color: green;
-  width: 300px;
+  background-color: white;
+  width: 250px;
   height: 100vh;
-  min-width: 300px;
+  min-width: 200px;
   overflow: scroll;
 }
 
@@ -84,26 +86,34 @@
 
 .sidebar-wrapper .sidebar .search input {
   width: 100%;
+  height: 35px;
+  border-radius: 30px;
+  text-align: center;
+  border: 0;
 }
 
 .sidebar-wrapper .sidebar ul li {
   list-style: none;
-  font-size: 1.7rem;
-  text-align: center;
+  font-size: 1rem;
   padding: 5px 0;
+}
+
+.sidebar-wrapper .sidebar ul li:hover {
+  background-color: black;
+}
+
+.sidebar-wrapper .sidebar ul li:hover a {
+  color: white;
 }
 
 .sidebar-wrapper .sidebar ul li a {
   text-decoration: none;
-  color: #2d2d2d;
-}
-
-.sidebar-wrapper .sidebar ul li a:hover {
-  color: white;
+  color: black;
+  font-size: 1.3rem;
 }
 
 .sidebar-wrapper .sidebar .container {
-  padding: 20px;
+  padding: 10px;
 }
 
 .sidebar-wrapper .sidebar .filter {
@@ -117,20 +127,33 @@
 }
 
 .sidebar-wrapper .sidebar .nav {
-  font-size: 2rem;
+  font-size: 1rem;
   display: inline-block;
   text-align: center;
   width: 100%;
-  padding-top: 20px;
 }
 
 .sidebar-wrapper .sidebar .nav span {
-  margin: 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px;
+}
+
+.sidebar-wrapper .sidebar .nav span img {
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  height: 30px;
+  width: 30px;
+}
+
+.sidebar-wrapper .sidebar .nav span .larger-svg {
+  height: 50px;
+  width: 50px;
 }
 
 .MuiCheckbox-root {

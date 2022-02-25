@@ -17,7 +17,7 @@ function App() {
 
  
 
-  const [filter, setFilter] =useState({
+  const [filter, setFilter] =useState(JSON.parse(localStorage.getItem('filter')) || {
     "commercial": {
       "checked": false,
       "name": "commercial"
@@ -71,7 +71,7 @@ function App() {
       "name": "parking"
     }
   })
-
+  console.log(filter);
   const [cities, setCities] = useState([{id:1,name:'Loading'}])
 
   async function getData(){
@@ -85,6 +85,7 @@ const filterHandler = (event) => {
   const {...filterClone} = filter
   filterClone[item].checked = !filterClone[item].checked
   setFilter(filterClone)
+  localStorage.setItem("filter",JSON.stringify(filterClone));
 }
 
   return (
