@@ -81,7 +81,7 @@ const Sidebar = (props) => {
                         <div className='nav'>
                             <span><img onClick={getPrev} src="/nav/arrow_back.svg" alt="" />
                             <img onClick={getNext} src="/nav/arrow_next.svg" alt="" /> </span>
-                            <span><img class="larger-svg" onClick={getRandom} src="/nav/random.svg" alt="" /></span>   
+                            <span><img className="larger-svg" onClick={getRandom} src="/nav/random.svg" alt="" /></span>   
                         </div>
 
                     <Filter 

@@ -20,7 +20,7 @@
 .place {
   width: 100%;
   min-height: 100vh;
-  padding: 20px 0;
+  padding: 20px 10px;
 }
 
 .place .tmsn {
@@ -33,24 +33,48 @@
 }
 
 .poi {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  padding: 10px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(25%, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+}
+
+@media (max-width: 1040px) {
+  .poi {
+    -ms-grid-columns: (minmax(33.3333%, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(33.3333%, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .poi {
+    -ms-grid-columns: (minmax(50%, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .poi {
+    -ms-grid-columns: (minmax(100%, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
 }
 
 .poi .category {
-  width: 33.3333%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.poi .category .place_info {
+  margin: 10px 0;
 }
 
 .poi .category h1 {
   text-transform: capitalize;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
 .center-flex {

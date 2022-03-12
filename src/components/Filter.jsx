@@ -25,9 +25,9 @@ const filters= Object.entries(props.filter)
                                     onChange={props.filterHandler}
                                     checked={item[1].checked}
                                     sx={{
-                                        color: '#114f37',
+                                        color: '#000000',
                                         '&.Mui-checked': {
-                                          color: '#114f37',
+                                          color: '#000000',
                                         },
                                       }}
                                      />} 

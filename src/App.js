@@ -71,7 +71,6 @@ function App() {
       "name": "parking"
     }
   })
-  console.log(filter);
   const [cities, setCities] = useState([{id:1,name:'Loading'}])
 
   async function getData(){

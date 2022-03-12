@@ -34,20 +34,34 @@ const Place = (props) => {
     
     const isEmpty = (array) => array.length>0
 
-
+    
     return (
         <div className='place'>
             <h1>{linkProp.name}</h1>
-            <iframe title="googleMap" width="100%" height="500" loading="lazy" allowFullScreen src={`https://www.google.com/maps/embed/v1/place?q=${geoLocation}&key=AIzaSyBUWGiVdxFtFNYjY2-45YFo4WWsxv4Yfu4&maptype=satellite`}></iframe>
+            <iframe title="googleMap" width="100%" height="90%" loading="lazy" allowFullScreen src={`https://www.google.com/maps/embed/v1/place?q=${geoLocation}&key=AIzaSyBUWGiVdxFtFNYjY2-45YFo4WWsxv4Yfu4&maptype=satellite`}></iframe>
             <div className='poi'>
                 {isFetched
                 ? places.map(object=>{
-                    
                     const items = object[1].features
+                    console.log(items[0])
                     return(
                         <div className='category'>
-                            <h1>{object[0]}</h1>
-                            {items.map(item=><p>{item.properties.name}</p>)}
+                            <h1>{object[0].replace('_', ' ')}</h1>
+                            {items.map(item=>{
+
+                                const placeName = item.properties.name
+                                const placeStreet = item.properties.address_line2 ?? ""
+                                const mapSearch = "https://www.google.com/maps/search/"+placeName + "+" + placeStreet
+
+                            return(
+                                <div className="place_info">
+                            <p>{placeName}</p>
+                            {placeName
+                            ?<a target="_blank" href={mapSearch}>Check it out</a>
+                            :""}
+                            </div>
+                            )}
+                            )}
                         </div>
                         
                     )
