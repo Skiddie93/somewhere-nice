@@ -72,6 +72,7 @@ function App() {
     }
   })
   const [cities, setCities] = useState([{id:1,name:'Loading'}])
+  const [sidebarMode, setSidebarMode] = useState(false)
 
   async function getData(){
     const response = await fetch("/indexedCities.json")
@@ -87,14 +88,19 @@ const filterHandler = (event) => {
   localStorage.setItem("filter",JSON.stringify(filterClone));
 }
 
+const sidebarHandler = () => {
+  setSidebarMode(!sidebarMode)
+}
+
   return (
-    <div className='main'>
+    <div className={sidebarMode?"main closed":"main"}>
       
     <Router>
       <Sidebar 
       cities={cities}
       filter={filter}
       filterHandler={filterHandler}
+      sidebarHandler={sidebarHandler}
       />
       <Routes>
       <Route path="/" element={<Front 
@@ -103,6 +109,8 @@ const filterHandler = (event) => {
       />
         <Route path="/city/:id" element={<Place
          filter={filter}
+         cities={cities}
+         sidebarMode= {sidebarMode}
         />} />
       </Routes>
     </Router>

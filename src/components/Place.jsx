@@ -1,15 +1,21 @@
 import { useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
+import Accordion from './parts/Accordion';
+import Category from './Category';
+import Tmsn from './parts/Tmsn';
 
 const Place = (props) => {
     const [isFetched, setIsFetched] = useState(false)
     const [places, setPlaces] = useState([])
+    const [hasItems, setHasItems] = useState(false)
     const linkProp = useLocation().state
-    
+    const cities = props.cities
+    const sidebarMode = props.sidebarMode
+
     const geoLocation = linkProp.lat + "%2C%20" + linkProp.lng
     const apiKey= 'f79827c3db7a4e58b07599601ca7d471'
     const location = linkProp.lng +','+ linkProp.lat
-    
+  
     
      const placesRequest = async () =>{
         let requestDataObject = {}
@@ -28,46 +34,44 @@ const Place = (props) => {
     } 
 
     useEffect(()=>{
+        setIsFetched(false)
         placesRequest()
-   
+        
     },[linkProp,props.filter])
     
-    const isEmpty = (array) => array.length>0
-
     
     return (
         <div className='place'>
-            <h1>{linkProp.name}</h1>
-            <iframe title="googleMap" width="100%" height="90%" loading="lazy" allowFullScreen src={`https://www.google.com/maps/embed/v1/place?q=${geoLocation}&key=AIzaSyBUWGiVdxFtFNYjY2-45YFo4WWsxv4Yfu4&maptype=satellite`}></iframe>
+
+            <Tmsn 
+            objectSet={cities}
+            extraClass="floating"
+            sidebarMode= {sidebarMode}
+            />
+
+            <h1 className="town-name">{linkProp.name}</h1>
+            <iframe title="googleMap" className="map_iframe" loading="lazy" allowFullScreen src={`https://www.google.com/maps/embed/v1/place?q=${geoLocation}&key=AIzaSyBUWGiVdxFtFNYjY2-45YFo4WWsxv4Yfu4&maptype=satellite`}></iframe>
             <div className='poi'>
                 {isFetched
                 ? places.map(object=>{
                     const items = object[1].features
-                    console.log(items[0])
+                    const categoryName = object[0].replace('_', ' ')
+                   
                     return(
-                        <div className='category'>
-                            <h1>{object[0].replace('_', ' ')}</h1>
-                            {items.map(item=>{
-
-                                const placeName = item.properties.name
-                                const placeStreet = item.properties.address_line2 ?? ""
-                                const mapSearch = "https://www.google.com/maps/search/"+placeName + "+" + placeStreet
-
-                            return(
-                                <div className="place_info">
-                            <p>{placeName}</p>
-                            {placeName
-                            ?<a target="_blank" href={mapSearch}>Check it out</a>
-                            :""}
-                            </div>
-                            )}
-                            )}
-                        </div>
+                    
+                    <Category 
+                    key={categoryName}
+                    categoryName= {categoryName}
+                    items = {items}
+                    />
                         
                     )
                 })
+                
+            
                 :(<p>Loading</p>)}
             </div>
+
         </div>
     );
 }

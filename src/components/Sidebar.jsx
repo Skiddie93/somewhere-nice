@@ -49,7 +49,7 @@ const Sidebar = (props) => {
 
        const search = (event) => {
         const input = event.target.value.toLowerCase()
-        const newRange = [0,10]
+        const newRange = [0,pageLength]
         if(input.length > 2){
             const matchingTerms = cities.filter(i=>i.name.toLowerCase().includes(input))
             setRange(newRange)
@@ -64,9 +64,10 @@ const Sidebar = (props) => {
        
       
     return (
-        <div className='sidebar-wrapper'>
+            <div className="sidebar-wrapper">
+            <div onClick={props.sidebarHandler} className='colapse'><img src="/nav/arrow_next.svg" alt="" /></div>
             <div className='sidebar'>
-                <div className="container">
+                <div className="sidebar-container">
                     <div className='search'>
                         <input 
                         placeholder='Search'  
@@ -79,9 +80,9 @@ const Sidebar = (props) => {
                         </ul>
                         </div>
                         <div className='nav'>
-                            <span><img onClick={getPrev} src="/nav/arrow_back.svg" alt="" />
-                            <img onClick={getNext} src="/nav/arrow_next.svg" alt="" /> </span>
-                            <span><img className="larger-svg" onClick={getRandom} src="/nav/random.svg" alt="" /></span>   
+                            <div className="nav-buttons"><img onClick={getPrev} src="/nav/arrow_back.svg" alt="" />
+                            <img onClick={getNext} src="/nav/arrow_next.svg" alt="" /> </div>
+                            <div className="to-random"><img className="larger-svg" onClick={getRandom} src="/nav/random.svg" alt="" /></div>   
                         </div>
 
                     <Filter 
@@ -91,7 +92,7 @@ const Sidebar = (props) => {
                     
                 </div>
             </div>
-        </div>
+            </div>
     );
 }
 

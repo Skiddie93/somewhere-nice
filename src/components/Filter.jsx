@@ -19,6 +19,7 @@ const filters= Object.entries(props.filter)
 
                                 return(
                                     <FormControlLabel 
+                                    key={item[0]}
                                     control=
                                     {<Checkbox
                                     name={item[0]}
