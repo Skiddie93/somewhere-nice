@@ -34,7 +34,7 @@ const Category = (props) => {
             const placeName = item.properties.name
             const placeStreet = item.properties.address_line2 ?? ""
            
-           
+          
 
             if(placeName) {
                 if(!hasItems) setHasItems(true)

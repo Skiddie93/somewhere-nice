@@ -166,6 +166,10 @@ $primary-color: #1abc9c;
                 margin-bottom: 30px;
                 background: $background;
                 border-bottom: 1px solid $primary-color;
+
+                &:focus{
+                    outline: none;
+                }
             }
         }
 
@@ -207,6 +211,22 @@ $primary-color: #1abc9c;
         .filter {
             display: flex;
             flex-direction: column;
+            padding: 25px 0;
+    
+            summary{
+                cursor: pointer;
+            }
+            label{
+                margin: 2px 0;
+
+                &:first-child{
+                    margin-top: 15px;
+                }
+            }
+
+            span{
+                text-transform: capitalize;
+            }
 
         }
 
@@ -235,7 +255,7 @@ $primary-color: #1abc9c;
                 justify-content: center;
                 align-items: center;
                 margin: 20px;
-
+                cursor: pointer;
                 img{
                     height: 50px;
                     width: 50px;
@@ -288,6 +308,7 @@ $primary-color: #1abc9c;
                 right:50%;
                 transform: translate(50%,-50%);
                 background-color: $primary-color;
+                transition: width linear 0.2s;
             }   
             &::after{
                 content: "";
@@ -298,7 +319,17 @@ $primary-color: #1abc9c;
                 top:50%;
                 right:50%;
                 transform: translate(50%,-50%);
+                transition: transform linear 0.2s;
+            }
 
+            &.open{
+
+                &::before{
+                    width: 0;
+                } 
+                &::after{
+                    transform: translate(50%,-50%) rotate(90deg);
+                }
             }
         }
     }
@@ -320,6 +351,10 @@ $primary-color: #1abc9c;
         top: 0;
         left: 0;
         
+        a{
+            margin: 10px 0;
+            display: flex;
+        }
     }
 
    

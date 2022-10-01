@@ -24,7 +24,7 @@ const Accordion = (props) => {
         <div className="accordion">
             <div onClick={handleAccordion} className="title">
                 <span className="place-name">{placeName?placeName:""}</span> 
-                <span className="more"></span> 
+                <span className={isOpen?"more open":"more"}></span> 
             </div>
             
             <div style={{height: isOpen}} className={"content"}>
