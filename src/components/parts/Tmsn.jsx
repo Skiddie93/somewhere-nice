@@ -21,7 +21,7 @@ const Tmsn = (props) => {
 
     return (
         <div onClick={getRandom} className={`tmsn ${props.extraClass?props.extraClass:""} ${props.sidebarMode?"show":""}`}>
-        <img src="/nav/random.svg" />
+        <img src="nav/random.svg" />
      </div>
     );
 }

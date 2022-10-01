@@ -75,7 +75,7 @@ function App() {
   const [sidebarMode, setSidebarMode] = useState(false)
 
   async function getData(){
-    const response = await fetch("/indexedCities.json")
+    const response = await fetch("indexedCities.json")
     const data = await response.json()
     setCities(data)
 }
