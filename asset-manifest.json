@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/somewhere-nice/static/css/main.512b46b7.css",
+    "main.js": "/somewhere-nice/static/js/main.6199f012.js",
+    "index.html": "/somewhere-nice/index.html",
+    "main.512b46b7.css.map": "/somewhere-nice/static/css/main.512b46b7.css.map",
+    "main.6199f012.js.map": "/somewhere-nice/static/js/main.6199f012.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.512b46b7.css",
+    "static/js/main.6199f012.js"
+  ]
+}
