@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import '../../style.css';
+import '../style.css';
 
 
 const Tmsn = (props) => {
@@ -21,7 +21,7 @@ const Tmsn = (props) => {
 
     return (
         <div onClick={getRandom} className={`tmsn ${props.extraClass?props.extraClass:""} ${props.sidebarMode?"show":""}`}>
-        <img src="nav/random.svg" />
+        <img src="/somewhere-nice/nav/random.svg" />
      </div>
     );
 }

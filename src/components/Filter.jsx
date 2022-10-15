@@ -12,7 +12,7 @@ const filters= Object.entries(props.filter)
         <div>
              <div className='filter'>
              <details>
-            <summary> Filter <img src="nav/filter.svg" alt="" /> </summary>
+            <summary> Filter <img src="/somewhere-nice/nav/filter.svg" alt="" /> </summary>
                         <FormGroup>
                             {filters.map(item=>{
                                const displayName = item[0].split('_').join(' ')

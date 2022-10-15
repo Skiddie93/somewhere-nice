@@ -1,5 +1,5 @@
 import React from 'react';
-import Tmsn from './parts/Tmsn';
+import Tmsn from './Tmsn';
 
 const Front = (props) => {
  

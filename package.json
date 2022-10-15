@@ -1,6 +1,7 @@
 {
   "name": "somewhere_nice",
   "version": "0.1.0",
+  "homepage": "https://skiddie93.github.io/somewhere-nice/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",

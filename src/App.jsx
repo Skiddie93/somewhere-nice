@@ -75,7 +75,7 @@ function App() {
   const [sidebarMode, setSidebarMode] = useState(false)
 
   async function getData(){
-    const response = await fetch("indexedCities.json")
+    const response = await fetch("/somewhere-nice/indexedCities.json")
     const data = await response.json()
     setCities(data)
 }
@@ -95,7 +95,7 @@ const sidebarHandler = () => {
   return (
     <div className={sidebarMode?"main closed":"main"}>
       
-    <Router>
+    <Router  basename="/somewhere-nice">
       <Sidebar 
       cities={cities}
       filter={filter}

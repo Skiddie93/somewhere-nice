@@ -2,7 +2,7 @@ import { useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import Accordion from './parts/Accordion';
 import Category from './Category';
-import Tmsn from './parts/Tmsn';
+import Tmsn from './Tmsn';
 
 const Place = (props) => {
     const [isFetched, setIsFetched] = useState(false)

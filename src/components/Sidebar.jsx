@@ -65,7 +65,7 @@ const Sidebar = (props) => {
       
     return (
             <div className="sidebar-wrapper">
-            <div onClick={props.sidebarHandler} className='colapse'><img src="nav/arrow_next.svg" alt="" /></div>
+            <div onClick={props.sidebarHandler} className='colapse'><img src="/somewhere-nice/nav/arrow_next.svg" alt="" /></div>
             <div className='sidebar'>
                 <div className="sidebar-container">
                     <div className='search'>
@@ -80,9 +80,9 @@ const Sidebar = (props) => {
                         </ul>
                         </div>
                         <div className='nav'>
-                            <div className="nav-buttons"><img onClick={getPrev} src="nav/arrow_back.svg" alt="" />
-                            <img onClick={getNext} src="nav/arrow_next.svg" alt="" /> </div>
-                            <div className="to-random"><img className="larger-svg" onClick={getRandom} src="nav/random.svg" alt="" /></div>   
+                            <div className="nav-buttons"><img onClick={getPrev} src="/somewhere-nice/nav/arrow_back.svg" alt="" />
+                            <img onClick={getNext} src="/somewhere-nice/nav/arrow_next.svg" alt="" /> </div>
+                            <div className="to-random"><img className="larger-svg" onClick={getRandom} src="/somewhere-nice/nav/random.svg" alt="" /></div>   
                         </div>
 
                     <Filter 
