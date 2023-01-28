@@ -1,21 +1,34 @@
-import { useLocation } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import Accordion from './parts/Accordion';
 import Category from './Category';
 import Tmsn from './Tmsn';
+import Empty from './Empty';
+
 
 const Place = (props) => {
     const [isFetched, setIsFetched] = useState(false)
     const [places, setPlaces] = useState([])
-    const [hasItems, setHasItems] = useState(false)
-    const linkProp = useLocation().state
+    const params = useParams();
     const cities = props.cities
+    
+    const getCity = () =>{
+       const cityId = params.id
+       const singleCity = cities.filter(city => city.id == cityId)
+       
+        return singleCity[0]
+    }
+    
+   
+     const linkProp = useLocation().state || getCity()
+   
+   
     const sidebarMode = props.sidebarMode
 
     const geoLocation = linkProp.lat + "%2C%20" + linkProp.lng
     const apiKey= 'f79827c3db7a4e58b07599601ca7d471'
     const location = linkProp.lng +','+ linkProp.lat
-  
+
+    
     
      const placesRequest = async () =>{
         let requestDataObject = {}
@@ -49,8 +62,8 @@ const Place = (props) => {
             sidebarMode= {sidebarMode}
             />
 
-            <h1 className="town-name">{linkProp.name}</h1>
             <iframe title="googleMap" className="map_iframe" loading="lazy" allowFullScreen src={`https://www.google.com/maps/embed/v1/place?q=${geoLocation}&key=AIzaSyBUWGiVdxFtFNYjY2-45YFo4WWsxv4Yfu4&maptype=satellite`}></iframe>
+            <h1 className="town-name">{linkProp.name}</h1>
             <div className='poi'>
                 {isFetched
                 ? places.map(object=>{
@@ -69,7 +82,7 @@ const Place = (props) => {
                 })
                 
             
-                :(<p>Loading</p>)}
+                :<Empty extraClass="place-loader" />}
             </div>
 
         </div>

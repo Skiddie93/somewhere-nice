@@ -49,12 +49,12 @@ const Sidebar = (props) => {
 
        const search = (event) => {
         const input = event.target.value.toLowerCase()
-        const newRange = [0,pageLength]
+        const resetRange = [0,pageLength]
         if(input.length > 2){
             const matchingTerms = cities.filter(i=>i.name.toLowerCase().includes(input))
-            setRange(newRange)
+            setRange(resetRange)
             setToRender(matchingTerms)
-            setSlicedCities(matchingTerms.slice(newRange[0],newRange[1]))
+            setSlicedCities(matchingTerms.slice(resetRange[0],resetRange[1]))
         }else{
             setToRender(cities)
             setSlicedCities(toRender.slice(range[0],range[1]))

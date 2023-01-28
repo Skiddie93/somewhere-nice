@@ -1,5 +1,5 @@
 import './style.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import Sidebar from './components/Sidebar';
 import Place from './components/Place';
 import Front from './components/Front';
@@ -8,14 +8,18 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Empty from './components/Empty';
 
 function App() {
 
+
+
   useEffect(() => {
     getData()
+    
   }, []);
 
- 
+
 
   const [filter, setFilter] =useState(JSON.parse(localStorage.getItem('filter')) || {
     "commercial": {
@@ -71,12 +75,15 @@ function App() {
       "name": "parking"
     }
   })
-  const [cities, setCities] = useState([{id:1,name:'Loading'}])
-  const [sidebarMode, setSidebarMode] = useState(false)
 
+
+  const [cities, setCities] = useState([])
+  const [sidebarMode, setSidebarMode] = useState(false)
+ 
   async function getData(){
     const response = await fetch("/somewhere-nice/indexedCities.json")
     const data = await response.json()
+     
     setCities(data)
 }
 
@@ -91,6 +98,8 @@ const filterHandler = (event) => {
 const sidebarHandler = () => {
   setSidebarMode(!sidebarMode)
 }
+
+
 
   return (
     <div className={sidebarMode?"main closed":"main"}>
@@ -107,12 +116,23 @@ const sidebarHandler = () => {
       cities={cities} 
       />} 
       />
-        <Route path="/city/:id" element={<Place
-         filter={filter}
-         cities={cities}
-         sidebarMode= {sidebarMode}
-        />} />
-      </Routes>
+
+   
+         <Route path="/city/:id" element={
+         cities.length>0?
+         <Place
+            filter={filter}
+            cities={cities}
+            sidebarMode= {sidebarMode}
+           />
+           : <Empty extraClass="city-loader" />
+           
+           } />
+
+
+         </Routes>
+    
+      
     </Router>
     </div>
   );
