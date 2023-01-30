@@ -93,6 +93,10 @@ $accent: #8fbcbb;
         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     }
 
+    .place{
+        margin-left: 0 !important;
+    }
+
     .category {
        
         padding: 10px;
@@ -511,3 +515,5 @@ $accent: #8fbcbb;
     width: 100%;
     background: $background;
   }
+
+  

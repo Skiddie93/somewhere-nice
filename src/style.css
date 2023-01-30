@@ -107,6 +107,10 @@
   }
 }
 
+.poi .place {
+  margin-left: 0 !important;
+}
+
 .poi .category {
   padding: 10px;
   border-radius: 10px;
