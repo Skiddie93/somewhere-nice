@@ -7,7 +7,7 @@ const Empty = (props) => {
     return (
         <div className="place">
             <div className={extraClass}>
-            <div class="lds-ripple"><div></div><div></div></div>
+            <div className="lds-ripple"><div></div><div></div></div>
             </div>
         </div>
     );

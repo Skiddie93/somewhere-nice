@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router';
+import { useLocation, useParams, useNavigate} from 'react-router';
 import { useEffect, useState } from 'react';
 import Category from './Category';
 import Tmsn from './Tmsn';
@@ -8,27 +8,46 @@ import Empty from './Empty';
 const Place = (props) => {
     const [isFetched, setIsFetched] = useState(false)
     const [places, setPlaces] = useState([])
+    const navigation = useNavigate()
+    const [badParam, setBadParam] = useState(false)
     const params = useParams();
     const cities = props.cities
     
     const getCity = () =>{
        const cityId = params.id
        const singleCity = cities.filter(city => city.id == cityId)
-       
-        return singleCity[0]
+        
+       if(singleCity.length>0){
+
+       return singleCity[0]
+
+        }else{
+            if(badParam === false){
+                setBadParam(true)
+            }
+            return {
+                "lat": "0",
+                "lng": "0",
+            }
+        }
     }
     
    
-     const linkProp = useLocation().state || getCity()
-   
-   
-    const sidebarMode = props.sidebarMode
+    const linkProp = useLocation().state || getCity()
+    
+    console.log(linkProp);
 
+    useEffect(()=>{
+        if(badParam === true){
+            navigation("/somewhere-nice")
+        }
+    },[badParam])
+
+    const sidebarMode = props.sidebarMode
     const geoLocation = linkProp.lat + "%2C%20" + linkProp.lng
     const apiKey= 'f79827c3db7a4e58b07599601ca7d471'
     const location = linkProp.lng +','+ linkProp.lat
 
-    
     
      const placesRequest = async () =>{
         let requestDataObject = {}
@@ -43,11 +62,13 @@ const Place = (props) => {
             requestDataObject[category] = data
         }
         setIsFetched(true)
-        setPlaces(Object.entries(requestDataObject))        
+        setPlaces(Object.entries(requestDataObject))
+          
     } 
 
     useEffect(()=>{
         setIsFetched(false)
+        if(linkProp.lat!= "0")
         placesRequest()
         
     },[linkProp,props.filter])

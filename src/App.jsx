@@ -6,7 +6,8 @@ import Front from './components/Front';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 import Empty from './components/Empty';
 
@@ -117,7 +118,6 @@ const sidebarHandler = () => {
       />} 
       />
 
-   
          <Route path="/city/:id" element={
          cities.length>0?
          <Place
@@ -129,6 +129,7 @@ const sidebarHandler = () => {
            
            } />
 
+          <Route path="*" element={<Navigate to="/" replace  />} />
 
          </Routes>
     
